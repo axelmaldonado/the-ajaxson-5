@@ -15,11 +15,11 @@ function fetchAndDisplayGif(event) {
   event.preventDefault();
 
   // get the user's input text from the DOM
-  var searchQuery = $("#form-gif-request").val(); // TODO should be e.g. "dance"
+  var searchQuery = $("#form-gif-request input").val(); // TODO should be e.g. "dance"
 
   // configure a few parameters to attach to our request
   var params = {
-    api_key: "dc6zaTOxFJmzC",
+    api_key: "EUqpDXUbWyFY8HELoeaAo4KLi7M8Z5FS",
     tag: "Jackson 5 " + searchQuery // TODO should be e.g. "jackson 5 dance"
   };
 
@@ -36,7 +36,7 @@ function fetchAndDisplayGif(event) {
 
       // TODO
       // 1. set the source attribute of our image to the image_url of the GIF
-      $("#gif").attr("src".response.data.image_url);
+      $("#gif").attr("src", response.data.image_url);
       setGifLoadedStatus(true);
       // 2. hide the feedback message and display the image
     },
@@ -51,7 +51,7 @@ function fetchAndDisplayGif(event) {
 
   // TODO
   // give the user a "Loading..." message while they wait
-  $("#feedback").text("Loading...");
+  //$("#feedback").text("Loading...");
 }
 
 /**
