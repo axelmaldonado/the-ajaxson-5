@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
     <title>The AJAXson 5</title>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="request-gif.js"></script>
   </head>
   <body>
-    <h1>The AJAXson 5</h1>
+    <div class="container-fluid text-center">
+      <h1 class="jumbotron">The AJAXson 5</h1>
 
-    <form id="form-gif-request">
-      <div class="gifKeyword">
-        <label>What kind of Jackson 5 related gif do you want?</label>
-        <input name="tag" type="text" />
-      </div>
-      <div>
-        <label>Prove you are not a robot by answering this riddle:</label>
-        <input name="tag" id="captcha" type="text" />
-        <label> <strong>Jacksons are better than 1.</strong></label>
-      </div>
-      <input type="submit" value="Get my Gif!" />
-    </form>
+      <form id="form-gif-request">
+        <div>
+          <label>What kind of Jackson 5 related gif do you want?</label>
+          <input name="tag" type="text" />
+        </div>
+        <div>
+          <label>Prove you are not a robot by answering this riddle:</label>
+          <input name="tag" id="captcha" type="text" />
+          <label> <strong>Jacksons are better than 1.</strong></label>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Get my Gif!" />
+      </form>
 
-    <img id="gif" src="" hidden="true" />
-    <p id="feedback" hidden="true`"></p>
+      <img id="gif" src="" hidden="true" />
+      <p id="feedback" hidden="true`"></p>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
