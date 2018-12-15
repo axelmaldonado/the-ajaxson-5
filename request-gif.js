@@ -23,35 +23,47 @@ function fetchAndDisplayGif(event) {
     tag: "Jackson 5 " + searchQuery // TODO should be e.g. "jackson 5 dance"
   };
 
-  // make an ajax request for a random GIF
-  $.ajax({
-    url: "https://api.giphy.com/v1/gifs/random", // TODO where should this request be sent?
-    data: params, // attach those extra parameters onto the request
-    success: function(response) {
-      // if the response comes back successfully, the code in here will execute.
+  var verify = Number($("#captcha").val());
 
-      // jQuery passes us the `response` variable, a regular javascript object created from the JSON the server gave us
-      console.log("we received a response!");
-      console.log(response);
+  if (verify != 5) {
+    setGifLoadedStatus(false);
+    $("#form-gif-request").append(
+      $('<p id="error"></p>')
+        .text("No gifs for you.")
+        .css("color", "red")
+    );
+  } else {
+    // make an ajax request for a random GIF
+    $.ajax({
+      url: "https://api.giphy.com/v1/gifs/random", // TODO where should this request be sent?
+      data: params, // attach those extra parameters onto the request
+      success: function(response) {
+        // if the response comes back successfully, the code in here will execute.
 
-      // TODO
-      // 1. set the source attribute of our image to the image_url of the GIF
-      $("#gif").attr("src", response.data.image_url);
-      setGifLoadedStatus(true);
-      // 2. hide the feedback message and display the image
-    },
-    error: function() {
-      // if something went wrong, the code in here will execute instead of the success function
+        // jQuery passes us the `response` variable, a regular javascript object created from the JSON the server gave us
+        console.log("we received a response!");
+        console.log(response);
 
-      // give the user an error message
-      $("#feedback").text("Sorry, could not load GIF. Try again!");
-      setGifLoadedStatus(false);
-    }
-  });
+        // TODO
+        // 1. set the source attribute of our image to the image_url of the GIF
+        $("#gif").attr("src", response.data.image_url);
+        setGifLoadedStatus(true);
+        // 2. hide the feedback message and display the image
+        $("#feedback").text(" ");
+        $("#form-gif-request #error").text("");
+      },
+      error: function() {
+        // if something went wrong, the code in here will execute instead of the success function
 
-  // TODO
-  // give the user a "Loading..." message while they wait
-  //$("#feedback").text("Loading...");
+        // give the user an error message
+        $("#feedback").text("Sorry, could not load GIF. Try again!");
+        setGifLoadedStatus(false);
+      }
+    });
+    // TODO
+    // give the user a "Loading..." message while they wait
+    $("#feedback").text("Loading...");
+  }
 }
 
 /**
@@ -62,4 +74,5 @@ function fetchAndDisplayGif(event) {
 function setGifLoadedStatus(isCurrentlyLoaded) {
   $("#gif").attr("hidden", !isCurrentlyLoaded);
   $("#feedback").attr("hidden", isCurrentlyLoaded);
+  $("#form-gif-request #error").text("");
 }
